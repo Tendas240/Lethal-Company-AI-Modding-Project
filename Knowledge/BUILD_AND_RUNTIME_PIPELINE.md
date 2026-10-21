@@ -169,3 +169,28 @@ not an independently revalidated identity between installed local Gale bytes
 and canonical S1.42AK profile archive bytes. P0 remains PARTIAL, P2–P6 are
 preliminary supported; neither runtime acceptance nor reduced technical
 Residual 21 follows from this ingestion alone.
+
+## Separate S1.42AK Offense random-batch V2 contract (not upload approval)
+
+`Current/S1.42AK_OFFENSE_RANDOM_BATCH_V2_INGEST_V1.json` is a different single-source,
+fail-closed contract from the permanently consumed historical Mineshaft V1.
+Expected local original `LogOutput.log` is exactly **10,906,072 bytes** with SHA-256
+`969044ab459387c3a509134c4c56a10ae1736b46af9fc76d3ac8cf0e125ce07d`.
+Its only reserved inbox identity is
+`RuntimeInbox/Current/S1.42AK_OFFENSE_RANDOM_BATCH_20261021_LogOutput.log`.
+The S1.42AK attribution exception checks the accepted-profile identity and the
+unchanged BMDSFIX1 active candidate/controller against the machine state/buildspec.
+Ordinary and large ingest refuse the exact original (including direct ZIP members)
+instead of silently assigning it to BMDSFIX1. Replay and contract drift fail closed;
+CONSUMED receipt, raw original, INDEX and analyzer evidence are separately byte-validated.
+
+No original bytes are present in this contract alone. The user's unchanged Gale-profile
+attestation is affirmative human provenance, **not** independently verified installed
+DLL/profile bytes or P0/P1 promotion. For logs above 8 MiB the streaming analyzer covers
+all lines but does not create duplicate lossless chat chunks; any line-exact episode
+inspection needs justified original-byte reads/query work. V2 explicitly retains the
+raw original until a separate P0-P6 and retention decision. The 14-day disposable
+large-log branch is **not** a substitute. Before any upload to this public repository,
+obtain distinct express publication/rights/privacy approval and re-hash source bytes;
+public Git history cannot be made private again by a later failed CI or branch deletion.
+No profile, build, active-controller, runtime, gameplay, acceptance or trust change follows.

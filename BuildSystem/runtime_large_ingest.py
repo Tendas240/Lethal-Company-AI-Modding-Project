@@ -13,6 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path, PurePosixPath
 
 from runtime_log_analyzer import analyze_log, is_text_candidate
+from runtime_ingest import refuse_misattributed_v2_original
 
 PART_RE = re.compile(r"^(?P<base>.+\.zip)\.part(?P<num>\d{3})$")
 
@@ -94,15 +95,16 @@ def main() -> int:
     build_id = args.active.read_text(encoding="utf-8").strip()
     if not build_id:
         raise RuntimeError("ACTIVE_BUILD.txt is empty")
-    args.output.mkdir(parents=True, exist_ok=True)
-    args.scratch.mkdir(parents=True, exist_ok=True)
-
     with tempfile.TemporaryDirectory(prefix="runtime-large-") as td:
         temp = Path(td)
         logical, input_records = reconstruct_inputs(args.inbox, temp)
         if not logical:
             print("No large runtime input found.")
             return 0
+        # Check reconstructed ZIPs and original members BEFORE creating evidence output.
+        refuse_misattributed_v2_original(logical)
+        args.output.mkdir(parents=True, exist_ok=True)
+        args.scratch.mkdir(parents=True, exist_ok=True)
 
         stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
         run_dir = args.output / "RuntimeEvidence" / build_id / stamp
