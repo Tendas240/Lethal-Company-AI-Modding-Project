@@ -43,7 +43,7 @@ activate or test anything.
 
 The separately versioned contract is `Current/S1.42AK_OFFENSE_RANDOM_BATCH_V2_INGEST_V1.json`.
 It is bound to exactly 10,906,072 original bytes with SHA-256
-`969044ab459387c3a509134c4c56a10ae1736b46af9fc76d3ac8cf0e125ce07d`,
+`969044ab459387c3a509134c4c56a10ae1736b46af9fc76d3ac8cf01c25ec07d`,
 user-attested unchanged S1.42AK profile and unchanged S1.42AK-BMDSFIX1 runtime pointer.
 Only after **separate express raw/public repository upload approval**, the reserved inbox
 the reserved filename `S1.42AK_OFFENSE_RANDOM_BATCH_20261021_LogOutput.log` inside the existing `RuntimeInbox/Current/` directory
