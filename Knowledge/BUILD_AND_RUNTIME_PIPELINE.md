@@ -175,7 +175,7 @@ Residual 21 follows from this ingestion alone.
 `Current/S1.42AK_OFFENSE_RANDOM_BATCH_V2_INGEST_V1.json` is a different single-source,
 fail-closed contract from the permanently consumed historical Mineshaft V1.
 Expected local original `LogOutput.log` is exactly **10,906,072 bytes** with SHA-256
-`969044ab459387c3a509134c4c56a10ae1736b46af9fc76d3ac8cf0e125ce07d`.
+`969044ab459387c3a509134c4c56a10ae1736b46af9fc76d3ac8cf01c25ec07d`.
 Its only reserved inbox identity is
 the reserved filename `S1.42AK_OFFENSE_RANDOM_BATCH_20261021_LogOutput.log` inside the existing `RuntimeInbox/Current/` directory.
 The S1.42AK attribution exception checks the accepted-profile identity and the
