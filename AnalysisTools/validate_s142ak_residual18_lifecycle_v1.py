@@ -5,7 +5,11 @@ import argparse
 import copy
 import hashlib
 import json
+import runpy
+import subprocess
+import sys
 from pathlib import Path
+from unittest.mock import patch
 
 ROOT=Path(__file__).resolve().parents[1]
 INDEX="RuntimeEvidence/S1.42AK/20261022T103937Z/INDEX.json"
@@ -82,6 +86,24 @@ def check_workflows():
             check("python AnalysisTools/validate_s142ak_residual21_lifecycle_v1.py --"+mode not in body,"stale current gate "+path)
     body=(ROOT/CI[0]).read_text(encoding="utf-8")
     check("fetch-depth: 0" in body and "'AnalysisTools/**'" in body and "'Current/**'" in body,"CI preserved")
+    for workflow, modes in (
+        (".github/workflows/knowledge-architecture.yml",
+         ("--historical-cross-diagnostic", "--historical-cross-diagnostic-self-test")),
+        (".github/workflows/s142ak-tsdiag1-publication-lifecycle.yml",
+         ("--historical-cross-diagnostic", "--historical-cross-diagnostic-self-test",
+          "--historical-publication", "--historical-publication-self-test")),
+    ):
+        content = (ROOT / workflow).read_text(encoding="utf-8")
+        for mode in modes:
+            expected = "python AnalysisTools/validate_s142ak_residual18_lifecycle_v1.py " + mode
+            check(expected in [line.strip() for line in content.splitlines()],
+                  "historical frozen adapter invocation: " + workflow + " " + mode)
+        check("python AnalysisTools/validate_s142ak_cross_diagnostic_frozen_provenance.py" not in content and
+              "python AnalysisTools/validate_s142ak_tsdiag1_publication.py" not in content,
+              "no historical validator may run on true V2 state: " + workflow)
+    publication = (ROOT / ".github/workflows/s142ak-tsdiag1-publication-lifecycle.yml").read_text(encoding="utf-8")
+    check("'AnalysisTools/validate_s142ak_residual18_lifecycle_v1.py'" in publication,
+          "publication trigger must include versioned adapter")
 
 def load():
     return js("Current/CURRENT_STATE.json"),js(INDEX),js(RECEIPT),js("BuildSpecs/current.json"),(ROOT/"RuntimeInbox/ACTIVE_BUILD.txt").read_text().strip()
@@ -125,10 +147,95 @@ def self_test():
     check_workflows()
     print("PASS: exact current-18 negative mutation regression and protected original bytes")
 
+
+# The actual V2 proof is mandatory. Only the three historical counters are
+# projected in process memory, never persisted to the repository or original log.
+FROZEN_ORIGINAL_VALIDATORS = {
+    "cross": (
+        "AnalysisTools/validate_s142ak_cross_diagnostic_frozen_provenance.py",
+        "67ed414709dca5abb63f5573d2185cb5f0f10c8f",
+    ),
+    "publication": (
+        "AnalysisTools/validate_s142ak_tsdiag1_publication.py",
+        "d61f3818e301d2cafbe77bc028b1e95a653dd27a",
+    ),
+}
+RESIDUAL_KEYS = (
+    "residual_no_trusted_actual_generation_proof",
+    "residual_viable_equal_100",
+    "residual_owner_hard_block",
+)
+
+
+def historical_frozen_adapter(which, negative=False):
+    check(which in FROZEN_ORIGINAL_VALIDATORS, "unknown frozen validator")
+    # Validate real V2 18/6/12, exact 10,906,072 raw bytes and SHA, three
+    # independently attributed Offense flows, receipt, retention, controllers,
+    # untouched source records and ALL real-state negative tests FIRST.
+    current()
+    self_test()
+    for source, expected_sha in FROZEN_ORIGINAL_VALIDATORS.values():
+        tree_sha = subprocess.check_output(
+            ["git", "rev-parse", "HEAD:" + source], cwd=ROOT, text=True
+        ).strip()
+        disk_sha = subprocess.check_output(
+            ["git", "hash-object", str(ROOT / source)], cwd=ROOT, text=True
+        ).strip()
+        check(tree_sha == disk_sha == expected_sha, "frozen validator byte drift: " + source)
+
+    state, _index, _receipt, _build, _active = load()
+    phase = state["selected_scope"]["phase_c"]
+    check(tuple(phase[key] for key in RESIDUAL_KEYS) == (18, 6, 12),
+          "real V2 proof must precede historical state projection")
+    check(phase["toy_store_tsdiag1_runtime_evidence_reconciled"] is True and
+          phase["toy_store_tsdiag1_runtime_attempt_consumed"] is True and
+          phase["toy_store_tsdiag1_runtime_armed"] is False and
+          phase["toy_store_runtime_test_authorized"] is False,
+          "historical TSDIAG1 completed provenance not frozen")
+
+    historical = copy.deepcopy(state)
+    projected = historical["selected_scope"]["phase_c"]
+    for key, value in zip(RESIDUAL_KEYS, (21, 9, 12)):
+        projected[key] = value
+    check(tuple(projected[key] for key in RESIDUAL_KEYS) == (21, 9, 12),
+          "historical memory-only projection mismatch")
+    historical_json = json.dumps(historical)
+    source = FROZEN_ORIGINAL_VALIDATORS[which][0]
+    real_read_text = Path.read_text
+    state_path = ROOT / "Current/CURRENT_STATE.json"
+
+    def in_memory_state_read(self, *args, **kwargs):
+        if self == state_path:
+            return historical_json
+        return real_read_text(self, *args, **kwargs)
+
+    original_argv = sys.argv[:]
+    try:
+        # Exact original Python entry point: no skipped assertions or caught
+        # validator failures. The Path override applies to this ONE JSON path.
+        with patch.object(Path, "read_text", in_memory_state_read):
+            sys.argv = [str(ROOT / source)] + (["--self-test"] if negative else [])
+            runpy.run_path(str(ROOT / source), run_name="__main__")
+    finally:
+        sys.argv = original_argv
+    print("PASS: V2 fail-closed then byte-identical frozen " + which +
+          (" negative self-tests" if negative else " original gate"))
+
+
 if __name__=="__main__":
     parser=argparse.ArgumentParser()
-    parser.add_argument("--current",action="store_true");parser.add_argument("--self-test",action="store_true")
+    parser.add_argument("--current",action="store_true")
+    parser.add_argument("--self-test",action="store_true")
+    parser.add_argument("--historical-cross-diagnostic",action="store_true")
+    parser.add_argument("--historical-cross-diagnostic-self-test",action="store_true")
+    parser.add_argument("--historical-publication",action="store_true")
+    parser.add_argument("--historical-publication-self-test",action="store_true")
     opts=parser.parse_args()
-    if not(opts.current or opts.self_test):parser.error("choose --current or --self-test")
-    if opts.current:current()
-    if opts.self_test:self_test()
+    if sum(vars(opts).values()) != 1:
+        parser.error("choose exactly one fail-closed validation mode")
+    if opts.current: current()
+    if opts.self_test: self_test()
+    if opts.historical_cross_diagnostic: historical_frozen_adapter("cross")
+    if opts.historical_cross_diagnostic_self_test: historical_frozen_adapter("cross", negative=True)
+    if opts.historical_publication: historical_frozen_adapter("publication")
+    if opts.historical_publication_self_test: historical_frozen_adapter("publication", negative=True)
