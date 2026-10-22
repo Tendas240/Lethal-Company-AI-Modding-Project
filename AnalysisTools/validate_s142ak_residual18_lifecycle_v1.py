@@ -96,7 +96,7 @@ def check_workflows():
         content = (ROOT / workflow).read_text(encoding="utf-8")
         for mode in modes:
             expected = "python AnalysisTools/validate_s142ak_residual18_lifecycle_v1.py " + mode
-            check(expected in [line.strip() for line in content.splitlines()],
+            check(expected in [line.strip().removeprefix("run: ") for line in content.splitlines()],
                   "historical frozen adapter invocation: " + workflow + " " + mode)
         check("python AnalysisTools/validate_s142ak_cross_diagnostic_frozen_provenance.py" not in content and
               "python AnalysisTools/validate_s142ak_tsdiag1_publication.py" not in content,
