@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "PENDING",
+  "status": "CONSUMED",
   "expected": {
     "contract_id": "S1.42AK-OFFENSE-RANDOM-BATCH-20261021-V2",
     "build_id": "S1.42AK",
@@ -13,7 +13,18 @@
     "runtime_active_build": "S1.42AK-BMDSFIX1",
     "moon": "Offense"
   },
-  "receipt": null,
+  "receipt": {
+    "contract_id": "S1.42AK-OFFENSE-RANDOM-BATCH-20261021-V2",
+    "ingested_utc": "20261022T103937Z",
+    "evidence_index": "RuntimeEvidence/S1.42AK/20261022T103937Z/INDEX.json",
+    "raw_path": "RuntimeEvidence/S1.42AK/20261022T103937Z/raw/LogOutput.log",
+    "sha256": "969044ab459387c3a509134c4c56a10ae1736b46af9fc76d3ac8cf01c25ec07d",
+    "size": 10906072,
+    "build_id": "S1.42AK",
+    "source_inbox_name": "S1.42AK_OFFENSE_RANDOM_BATCH_20261021_LogOutput.log",
+    "runtime_active_build_at_ingest": "S1.42AK-BMDSFIX1",
+    "original_profile_bytes_independently_verified": false
+  },
   "provenance": "USER_ATTESTED_S1_42AK_PROFILE_CONTINUITY_NOT_INDEPENDENT_BYTES",
   "retention": {
     "raw_original": "PRESERVE_UNTIL_SEPARATE_P0_P6_AND_RETENTION_DECISION",

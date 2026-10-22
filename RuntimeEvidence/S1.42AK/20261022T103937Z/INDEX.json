@@ -1,0 +1,65 @@
+{
+  "schema_version": 2,
+  "build_id": "S1.42AK",
+  "ingested_utc": "20261022T103937Z",
+  "pipeline": "runtime_ingest_v2_streaming_analysis",
+  "files": [
+    {
+      "name": "LogOutput.log",
+      "size": 10906072,
+      "sha256": "969044ab459387c3a509134c4c56a10ae1736b46af9fc76d3ac8cf01c25ec07d",
+      "extracted": []
+    }
+  ],
+  "analysis": [
+    {
+      "source": "RuntimeEvidence/S1.42AK/20261022T103937Z/raw/LogOutput.log",
+      "analysis": "RuntimeEvidence/S1.42AK/20261022T103937Z/analysis/raw__S1.42AK_OFFENSE_RANDOM_BATCH_20261021_LogOutput",
+      "stats": {
+        "schema_version": 1,
+        "source_file": "LogOutput.log",
+        "source_size_bytes": 10906072,
+        "source_sha256": "969044ab459387c3a509134c4c56a10ae1736b46af9fc76d3ac8cf01c25ec07d",
+        "line_count": 112894,
+        "event_count": 93822,
+        "unique_normalized_signatures": 14485,
+        "first_timestamp": "17:34:22.7656031",
+        "last_timestamp": "17:54:17.3173592",
+        "severity_counts": {
+          "UNPARSED": 1,
+          "Message": 1188,
+          "Debug": 41871,
+          "Info": 18879,
+          "Warning": 20470,
+          "Error": 11413
+        },
+        "parse_counts": {
+          "continuation_or_unparsed_lines": 19073,
+          "parsed_header_lines": 93821
+        },
+        "chat_readable_chunks_created": false,
+        "signature_chunk_count": 17
+      }
+    }
+  ],
+  "retention": {
+    "raw_and_extracted_are_disposable_after_acceptance": false,
+    "raw_original": "PRESERVE_UNTIL_SEPARATE_P0_P6_AND_RETENTION_DECISION",
+    "no_automatic_deletion": true,
+    "keep_before_deletion": [
+      "INDEX.json",
+      "analysis/STATS.json equivalents",
+      "analysis/MARKERS.json equivalents",
+      "analysis/signature index",
+      "canonical runtime acceptance documentation",
+      "SHA-256 values needed for provenance"
+    ]
+  },
+  "attribution": {
+    "mode": "COMPLETED_S1_42AK_OFFENSE_RANDOM_BATCH_V2_NOT_RUNTIME_ACTIVATION",
+    "contract_id": "S1.42AK-OFFENSE-RANDOM-BATCH-20261021-V2",
+    "source_inbox_name": "S1.42AK_OFFENSE_RANDOM_BATCH_20261021_LogOutput.log",
+    "runtime_active_build_at_ingest": "S1.42AK-BMDSFIX1",
+    "original_profile_bytes_independently_verified": false
+  }
+}
