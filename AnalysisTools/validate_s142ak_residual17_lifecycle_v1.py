@@ -19,6 +19,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE18 = "1b56e567cda265b46d12e6806cc2fe7f4f83f2de"
+BASE21 = "a5ae21ce9bad57a908ff5c3983d6c4e091d24e5b"
 OLD = "AnalysisTools/validate_s142ak_residual18_lifecycle_v1.py"
 RECORD = "Current/S1.42AK_MINESHAFT_LEVEL3FLOW_RESIDUAL17_BASIC_GENERATION_CANONIZATION_V1.md"
 V1_RAW = "RuntimeEvidence/S1.42AK/20261020T213936Z/raw/LogOutput.log"
@@ -104,8 +105,10 @@ def check_lines(lines: list[str]) -> None:
     def at(n: int, *needles: str) -> None:
         require(all(token in lines[n - 1] for token in needles), "log line " + str(n))
 
-    at(12241, "Final effective viable pool for Offense:", "Mineshaft(100)")
-    at(12260, "Final effective viable pool for Offense:", "Mineshaft(100)")
+    for n in (12241, 12260):
+        at(n, "Final effective viable pool for Offense:")
+        require(re.search(r"(?:^|, )Mineshaft\\(100\\)(?:,|$)", lines[n - 1]) is not None,
+                "exact standalone Mineshaft rarity 100, not Expanded Mineshaft: " + str(n))
     at(12262, "Created New Day History Log!", "PlanetName: Offense ,Mineshaft",
        "Day: 1")
     at(12527, "Dungeon has finished generating on this client after multiple frames")
@@ -284,8 +287,8 @@ def self_test() -> None:
     mutated[123] ^= 1
     reject(lambda: verify_raw_bytes(bytes(mutated)), "V1 raw byte corruption")
     for n, before, after in (
-        (12241, "Mineshaft(100)", "Mineshaft(0)"),
-        (12260, "Mineshaft(100)", "Mineshaft(0)"),
+        (12241, ", Mineshaft(100)", ", Mineshaft(0)"),
+        (12260, ", Mineshaft(100)", ", Mineshaft(0)"),
         (12262, "PlanetName: Offense", "PlanetName: Black Mesa"),
         (12262, "Day: 1", "Day: 2"),
         (12527, "Dungeon has finished generating", "Dungeon has NOT finished generating"),
@@ -336,6 +339,33 @@ def historical_18(*modes: str) -> None:
                            cwd=ROOT, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 
+def historical_21_negatives() -> None:
+    """Execute the original Residual-21 CURRENT and negative self-tests on real historic 21=9+12."""
+    check_current()
+    require(git("rev-parse", BASE21 + ":AnalysisTools/validate_s142ak_residual21_lifecycle_v1.py") ==
+            PINS["AnalysisTools/validate_s142ak_residual21_lifecycle_v1.py"],
+            "historical 21 exact validator blob")
+    with tempfile.TemporaryDirectory(prefix="mineshaft-residual21-original-") as tmp:
+        checkout = Path(tmp) / "historical"
+        subprocess.run(["git", "worktree", "add", "--detach", str(checkout), BASE21],
+                       cwd=ROOT, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        try:
+            require(subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=checkout,
+                                            text=True).strip() == BASE21,
+                    "historical residual-21 checkout mismatch")
+            for mode in ("current", "self-test"):
+                result = subprocess.run(
+                    [sys.executable, str(checkout / "AnalysisTools/validate_s142ak_residual21_lifecycle_v1.py"), "--" + mode],
+                    cwd=checkout, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                    check=False)
+                require(result.returncode == 0, "authentic Residual-21 --" + mode +
+                        " failed: " + result.stdout[-3000:])
+                print("PASS: authentic original Residual-21 --" + mode)
+        finally:
+            subprocess.run(["git", "worktree", "remove", "--force", str(checkout)],
+                           cwd=ROOT, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     for opt in ("current", "self-test", "historical-cross-diagnostic",
@@ -354,6 +384,7 @@ def main() -> None:
     elif mode == "self-test":
         self_test()
         historical_18("self-test")
+        historical_21_negatives()
     else:
         historical_18(mode)
 
