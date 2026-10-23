@@ -8,6 +8,7 @@ on:
       - 'Current/343_S1.42AK_PHASE_C_STORAGE_COMPLEX_SCDIAG1_SOURCE_STATIC_IMPLEMENTATION_CHECKPOINT.md'
       - 'Knowledge/INTERIORS_AND_LLL.md'
       - 'AnalysisTools/validate_s142ak_residual21_lifecycle_v1.py'
+      - 'AnalysisTools/validate_s142ak_residual17_lifecycle_v1.py'
       - '.github/workflows/s142ak-scdiag1-source-static.yml'
 permissions:
   contents: read
@@ -52,8 +53,8 @@ jobs:
       - name: Validate selector surface and unchanged live controllers
         run: |
           python AnalysisTools/validate_s142ak_residual21_lifecycle_v1.py --historical
-          python AnalysisTools/validate_s142ak_residual18_lifecycle_v1.py --current
-          python AnalysisTools/validate_s142ak_residual18_lifecycle_v1.py --self-test
+          python AnalysisTools/validate_s142ak_residual17_lifecycle_v1.py --current
+          python AnalysisTools/validate_s142ak_residual17_lifecycle_v1.py --self-test
       - name: Verify exact SCDIAG1 activation and frozen Gale routing without compile
         if: steps.runtime_stage.outputs.runtime == 'true'
         run: python AnalysisTools/validate_s142ak_scdiag1_activation.py
