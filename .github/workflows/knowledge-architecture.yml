@@ -78,14 +78,14 @@ jobs:
 
       - name: Independently validate SCDIAG1/FXDIAG1 frozen source and closed proof
         run: |
-          python AnalysisTools/validate_s142ak_cross_diagnostic_frozen_provenance.py
-          python AnalysisTools/validate_s142ak_cross_diagnostic_frozen_provenance.py --self-test
+          python AnalysisTools/validate_s142ak_residual18_lifecycle_v1.py --historical-cross-diagnostic
+          python AnalysisTools/validate_s142ak_residual18_lifecycle_v1.py --historical-cross-diagnostic-self-test
 
       - name: Independently validate historical TSDIAG1/SCDIAG1 source and current Residual-21 lifecycle
         run: |
           python AnalysisTools/validate_s142ak_residual21_lifecycle_v1.py --historical
-          python AnalysisTools/validate_s142ak_residual21_lifecycle_v1.py --current
-          python AnalysisTools/validate_s142ak_residual21_lifecycle_v1.py --self-test
+          python AnalysisTools/validate_s142ak_residual18_lifecycle_v1.py --current
+          python AnalysisTools/validate_s142ak_residual18_lifecycle_v1.py --self-test
 
       - name: Validate state-neutral architecture authorities
         run: python RepositoryTools/state_neutral_authority_validator.py
