@@ -107,7 +107,7 @@ def check_lines(lines: list[str]) -> None:
 
     for n in (12241, 12260):
         at(n, "Final effective viable pool for Offense:")
-        require(re.search(r"(?:^|, )Mineshaft\\(100\\)(?:,|$)", lines[n - 1]) is not None,
+        require(re.search(r"(?:^|, )Mineshaft\(100\)(?:,|$)", lines[n - 1]) is not None,
                 "exact standalone Mineshaft rarity 100, not Expanded Mineshaft: " + str(n))
     at(12262, "Created New Day History Log!", "PlanetName: Offense ,Mineshaft",
        "Day: 1")
@@ -216,6 +216,8 @@ def check_workflow_contents(contents: dict[str, str]) -> None:
     require("'AnalysisTools/validate_s142ak_residual17_lifecycle_v1.py'"
             in contents[".github/workflows/s142ak-tsdiag1-publication-lifecycle.yml"],
             "publication new adapter trigger")
+    require("fetch-depth: 0" in contents[".github/workflows/s142ak-tsdiag1-publication-lifecycle.yml"],
+            "historical publication CI needs complete Git objects")
     for path in (".github/workflows/s142ak-tsdiag1-source-static.yml",
                  ".github/workflows/s142ak-scdiag1-source-static.yml"):
         require("'AnalysisTools/validate_s142ak_residual17_lifecycle_v1.py'" in contents[path],
