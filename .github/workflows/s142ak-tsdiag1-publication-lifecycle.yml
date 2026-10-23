@@ -8,6 +8,7 @@ on:
       - 'AnalysisTools/validate_s142ak_tsdiag1_publication.py'
       - 'AnalysisTools/validate_s142ak_cross_diagnostic_frozen_provenance.py'
       - 'AnalysisTools/validate_s142ak_residual18_lifecycle_v1.py'
+      - 'AnalysisTools/validate_s142ak_residual17_lifecycle_v1.py'
       - '.github/workflows/s142ak-scdiag1-source-static.yml'
       - '.github/workflows/s142ak-fxdiag1-source-static.yml'
       - 'Profiles/LC V1 S1.42AK-TS1.r2z'
@@ -33,12 +34,12 @@ jobs:
           python-version: '3.12'
       - name: Independently pin historical source/proof even on state-only PRs
         run: |
-          python AnalysisTools/validate_s142ak_residual18_lifecycle_v1.py --historical-cross-diagnostic
-          python AnalysisTools/validate_s142ak_residual18_lifecycle_v1.py --historical-cross-diagnostic-self-test
+          python AnalysisTools/validate_s142ak_residual17_lifecycle_v1.py --historical-cross-diagnostic
+          python AnalysisTools/validate_s142ak_residual17_lifecycle_v1.py --historical-cross-diagnostic-self-test
       - name: Reject synthetic runtime/DERIVED/prevalidation and routing mutations
-        run: python AnalysisTools/validate_s142ak_residual18_lifecycle_v1.py --historical-publication-self-test
+        run: python AnalysisTools/validate_s142ak_residual17_lifecycle_v1.py --historical-publication-self-test
       - name: Assert exact frozen original profile, 337-to-338 byte diff and stage-aware canonical index boundary
-        run: python AnalysisTools/validate_s142ak_residual18_lifecycle_v1.py --historical-publication
+        run: python AnalysisTools/validate_s142ak_residual17_lifecycle_v1.py --historical-publication
       - name: Re-run permanent Gale Windows path guard without building
         run: |
           python RepositoryTools/gale_profile_path_length_guard.py --self-test
