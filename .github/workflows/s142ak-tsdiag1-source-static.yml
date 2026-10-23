@@ -8,6 +8,7 @@ on:
       - 'Current/361_S1.42AK_PHASE_C_TOY_STORE_TSDIAG1_SOURCE_STATIC_IMPLEMENTATION_CHECKPOINT.md'
       - 'Knowledge/INTERIORS_AND_LLL.md'
       - 'AnalysisTools/validate_s142ak_residual21_lifecycle_v1.py'
+      - 'AnalysisTools/validate_s142ak_residual17_lifecycle_v1.py'
       - '.github/workflows/s142ak-tsdiag1-source-static.yml'
 permissions:
   contents: read
@@ -31,5 +32,5 @@ jobs:
       - name: Validate sole postfix and unchanged live controllers
         run: |
           python AnalysisTools/validate_s142ak_residual21_lifecycle_v1.py --historical
-          python AnalysisTools/validate_s142ak_residual18_lifecycle_v1.py --current
-          python AnalysisTools/validate_s142ak_residual18_lifecycle_v1.py --self-test
+          python AnalysisTools/validate_s142ak_residual17_lifecycle_v1.py --current
+          python AnalysisTools/validate_s142ak_residual17_lifecycle_v1.py --self-test
