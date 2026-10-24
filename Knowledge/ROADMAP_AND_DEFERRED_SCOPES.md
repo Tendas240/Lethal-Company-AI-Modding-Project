@@ -29,7 +29,7 @@ The former BMAFR1I1 attribution-decision action in this section is historical: `
 
 ## Other deferred independent scopes
 
-- CullFactory exceptions for exact IDs `junkrooms` / `shatteredrooms`.
+- CullFactory exceptions for exact IDs `junkrooms` / `shatteredrooms` remain historically deferred as a joint independent task. The *Shatteredrooms-only* CullFactory 2.0.7 matching/safety prerequisite is conditionally proposed as an isolated dependency of Interior-first under `Current/417_S1.42AK_PHASE_C_SHATTEREDROOMS_CULLFACTORY_207_DEPENDENCY_SCOPE_DECISION.md` (documentation Draft PR only). This does not activate `junkrooms`, edit CullFactory config, replace `CURRENT_STATE.json.next_action`, or authorize build/runtime/merge; parser/live-flow semantics remain BLOCKED.
 - MelanieMausoleum fog reduction only for that interior.
 - Isolated `woah25-LethalEscapeUpdated 2.5.0` evaluation, including inside-to-outside enemy transition compatibility as a separate scope from ordinary exterior spawning.
 - Final long full-stack acceptance.

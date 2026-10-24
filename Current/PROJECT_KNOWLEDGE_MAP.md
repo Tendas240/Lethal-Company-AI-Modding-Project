@@ -32,6 +32,10 @@ Before performing project work, read and follow `Current/CHATGPT_SEGMENTED_EXECU
 | What rules govern local patches? | `patch_safety_policy` | `Current/68_PROJECT_LOCAL_PATCH_SAFETY_AND_REGRESSION_POLICY.md` |
 | Which build introduced/rejected/fixed something? | `build_lineage` | `Current/BUILD_LINEAGE.md` |
 
+## 2026-10-17 — Shatteredrooms/CullFactory 2.0.7 dependent gate (documentation Draft PR)
+
+`Current/417_S1.42AK_PHASE_C_SHATTEREDROOMS_CULLFACTORY_207_DEPENDENCY_SCOPE_DECISION.md` proposes one bounded `shatteredrooms`/C1 #41 CullFactory version-2.0.7 matching/safety prerequisite **within** the existing `interiors_and_lll` semantic topic and Interior-first scope. This is a conditional dependency only: `junkrooms` remains deferred, current machine next action and controllers are unchanged, exact plugin parser/live-flow matching is UNPROVEN/BLOCKED, and there is no Generation/Entrance/Traversal/NavMesh/Gameplay PASS, permission to edit config, or merge/build/runtime authorization. The machine semantic router `Current/PROJECT_KNOWLEDGE_MAP.json` therefore keeps its existing topic ID without a new topic.
+
 ## 2026-10-12 — User-directed Interior-first completion priority (PR proposal)
 
 `Current/412_S1.42AK_PHASE_C_INTERIOR_FIRST_COMPLETION_PRIORITY_DECISION.md` proposes the explicit **Interior-first** project order: finish the selected Universal Interior Viability / Equal Availability subproject before choosing any *independent* roadmap goal. This supersedes the post-#449 instruction to choose a different target **only after this proposal is merged and exact-main CI is verified**; until then `Current/CURRENT_STATE.json` on the actually checked branch remains the lifecycle authority.
