@@ -740,7 +740,7 @@ def assert_random_batch_v3(tmp: Path) -> None:
             raise AssertionError("V3 large-log ZIP misattribution accepted")
         assert not out.exists() and not scratch.exists()
     finally:
-                sys.argv = original_argv
+        sys.argv = original_argv
         os.chdir(original_cwd)
 
 
