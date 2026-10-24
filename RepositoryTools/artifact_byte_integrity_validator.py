@@ -58,6 +58,26 @@ V2_RETENTION = {
 }
 V2_MODE = "COMPLETED_S1_42AK_OFFENSE_RANDOM_BATCH_V2_NOT_RUNTIME_ACTIVATION"
 
+
+V3_REL = "Current/S1.42AK_OFFENSE_EXPLORATORY_V3_INGEST_V1.json"
+V3_FIXED = {
+    "contract_id": "S1.42AK-OFFENSE-EXPLORATORY-V3",
+    "build_id": "S1.42AK",
+    "inbox_filename": "S1.42AK_OFFENSE_EXPLORATORY_V3_LogOutput.log",
+    "raw_filename": "LogOutput.log",
+    "accepted_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
+    "accepted_profile_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
+    "runtime_active_build": "S1.42AK-BMDSFIX1",
+    "moon": "Offense"
+}
+V3_TEMPLATE = dict(V3_FIXED, size=None, sha256=None)
+V3_PROVENANCE = "USER_ATTESTED_S1_42AK_PROFILE_CONTINUITY_NOT_INDEPENDENT_BYTES"
+V3_RETENTION = {
+    "raw_original": "PRESERVE_UNTIL_SEPARATE_P0_P6_AND_RETENTION_DECISION",
+    "no_automatic_deletion": True
+}
+V3_MODE = "COMPLETED_S1_42AK_OFFENSE_EXPLORATORY_V3_NOT_RUNTIME_ACTIVATION"
+
 PENDING_ROLES = {
     "ACTIVE_RUNTIME_CANDIDATE_PENDING",
     "ACTIVE_RUNTIME_DIAGNOSTIC_PENDING",
@@ -381,6 +401,109 @@ def verify_v2_contract(root: Path, errors: list[str], *,
             errors.append(f"S1.42AK V2: missing analysis artifact {analysis_dir / name}")
 
 
+
+def verify_v3_contract(root: Path, errors: list[str], *,
+                       expected_override: dict[str, Any] | None = None) -> None:
+    path = root / V3_REL
+    if not path.is_file():
+        errors.append("S1.42AK V3: versioned contract missing")
+        return
+    try:
+        contract = load_json(path)
+    except (OSError, ValueError) as exc:
+        errors.append(f"S1.42AK V3: invalid contract JSON: {exc}")
+        return
+    expected = contract.get("expected", {})
+    if (not isinstance(expected, dict) or set(expected) != set(V3_TEMPLATE)
+            or any(expected.get(k) != v for k, v in V3_FIXED.items())
+            or set(contract) != {"schema_version", "status", "expected", "receipt", "provenance", "retention", "upload_authorized"}
+            or type(contract["schema_version"]) is not int or contract["schema_version"] != 1
+            or contract.get("provenance") != V3_PROVENANCE or contract.get("retention") != V3_RETENTION):
+        errors.append("S1.42AK V3: contract/identity/retention drift")
+        return
+    status, receipt = contract.get("status"), contract.get("receipt")
+    if status == "PREPARED_UNARMED":
+        if expected != V3_TEMPLATE or receipt is not None or contract.get("upload_authorized") is not False:
+            errors.append("S1.42AK V3: invalid PREPARED_UNARMED contract")
+        return
+    if (status not in {"PENDING", "CONSUMED"} or contract.get("upload_authorized") is not True
+            or type(expected.get("size")) is not int or expected["size"] < 1
+            or not isinstance(expected.get("sha256"), str) or len(expected["sha256"]) != 64
+            or any(ch not in "0123456789abcdef" for ch in expected["sha256"])
+            or expected["sha256"] in {ONE_SHOT_EXPECTED["sha256"], V2_EXPECTED["sha256"]}):
+        errors.append("S1.42AK V3: unbound original, invalid authorization or state")
+        return
+    if status == "PENDING":
+        if receipt is not None:
+            errors.append("S1.42AK V3: PENDING must have no receipt")
+        return
+    if not isinstance(receipt, dict):
+        errors.append("S1.42AK V3: CONSUMED missing receipt")
+        return
+    stamp = receipt.get("ingested_utc")
+    if (not isinstance(stamp, str) or len(stamp) != 16 or stamp[8] != "T"
+            or stamp[-1] != "Z" or not stamp[:8].isdigit() or not stamp[9:-1].isdigit()):
+        errors.append("S1.42AK V3: unsafe ingest timestamp")
+        return
+    directory = Path("RuntimeEvidence") / expected["build_id"] / stamp
+    index_rel = (directory / "INDEX.json").as_posix()
+    raw_rel = (directory / "raw" / expected["raw_filename"]).as_posix()
+    required = {
+        "contract_id": expected["contract_id"],
+        "ingested_utc": stamp,
+        "evidence_index": index_rel,
+        "raw_path": raw_rel,
+        "sha256": expected["sha256"],
+        "size": expected["size"],
+        "build_id": expected["build_id"],
+        "source_inbox_name": expected["inbox_filename"],
+        "runtime_active_build_at_ingest": expected["runtime_active_build"],
+        "original_profile_bytes_independently_verified": False,
+    }
+    if receipt != required:
+        errors.append("S1.42AK V3: consumed receipt drift")
+        return
+    index_path, raw_path = root / index_rel, root / raw_rel
+    if not index_path.is_file() or not raw_path.is_file() or raw_path.is_symlink():
+        errors.append("S1.42AK V3: original raw/INDEX missing")
+        return
+    try:
+        index = load_json(index_path)
+    except (OSError, ValueError) as exc:
+        errors.append(f"S1.42AK V3: invalid INDEX: {exc}")
+        return
+    attribution = {
+        "mode": V3_MODE,
+        "contract_id": expected["contract_id"],
+        "source_inbox_name": expected["inbox_filename"],
+        "runtime_active_build_at_ingest": expected["runtime_active_build"],
+        "original_profile_bytes_independently_verified": False,
+    }
+    indexed_files = index.get("files", [])
+    retention = index.get("retention", {})
+    if (index.get("build_id") != expected["build_id"] or index.get("ingested_utc") != stamp
+            or index.get("attribution") != attribution
+            or not isinstance(indexed_files, list) or len(indexed_files) != 1
+            or indexed_files[0].get("name") != expected["raw_filename"]
+            or indexed_files[0].get("sha256") != expected["sha256"]
+            or indexed_files[0].get("size") != expected["size"]
+            or retention.get("raw_and_extracted_are_disposable_after_acceptance") is not False
+            or retention.get("raw_original") != V3_RETENTION["raw_original"]
+            or retention.get("no_automatic_deletion") is not True):
+        errors.append("S1.42AK V3: INDEX/attribution/retention drift")
+    if raw_path.stat().st_size != expected["size"] or sha256_file(raw_path) != expected["sha256"]:
+        errors.append("S1.42AK V3: raw original byte mismatch")
+    analysis = index.get("analysis", [])
+    if (not isinstance(analysis, list) or len(analysis) != 1
+            or analysis[0].get("stats", {}).get("source_sha256") != expected["sha256"]
+            or analysis[0].get("stats", {}).get("source_size_bytes") != expected["size"]):
+        errors.append("S1.42AK V3: analyzer/INDEX SHA or size disagreement")
+    analysis_dir = directory / "analysis" / ("raw__" + Path(expected["inbox_filename"]).stem)
+    for name in ("STATS.json", "MARKERS.json", "CHAT_CHUNKS_MANIFEST.json"):
+        if not (root / analysis_dir / name).is_file():
+            errors.append(f"S1.42AK V3: missing analysis artifact {analysis_dir / name}")
+
+
 def main() -> int:
     errors: list[str] = []
     if not INTEGRITY_PATH.is_file():
@@ -429,6 +552,7 @@ def main() -> int:
 
     verify_one_shot_contract(ROOT, errors)
     verify_v2_contract(ROOT, errors)
+    verify_v3_contract(ROOT, errors)
 
     for error in errors:
         print("ERROR:", error)

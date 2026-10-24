@@ -54,3 +54,15 @@ Pre-publication review for secrets/personal information, local hash/size re-chec
 current contract/controller/head preflight and separate retention decision are required.
 The V2 raw must be retained until a separate P0-P6/retention decision; a successful
 Ingest/CI does not certify any Interior generation, P0/P1, or baseline acceptance.
+
+## S1.42AK exploratory Offense V3 (PREPARED_UNARMED)
+
+The unique future reserved source is `RuntimeInbox/Current/S1.42AK_OFFENSE_EXPLORATORY_V3_LogOutput.log`.
+The versioned contract is `Current/S1.42AK_OFFENSE_EXPLORATORY_V3_INGEST_V1.json`, initially
+`PREPARED_UNARMED` with unknown size/SHA-256 and no upload authorization.
+**Do not upload anything yet.** Only a later separately reviewed, exact-original-byte-bound
+`PENDING` contract with `upload_authorized=true` can permit one source and
+S1.42AK attribution without changing the active BMDSFIX1 controller.
+The existing V1/V2 contracts are CONSUMED and cannot be reused.
+Ordinary `LogOutput.log` and disposable `runtime-large` are not V3 routes.
+Raw original retention and P0-P6/owner/safety gates remain in force.

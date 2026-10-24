@@ -58,6 +58,51 @@ V2_RETENTION = {
 V2_MODE = "COMPLETED_S1_42AK_OFFENSE_RANDOM_BATCH_V2_NOT_RUNTIME_ACTIVATION"
 
 
+
+V3_CONTRACT = Path("Current/S1.42AK_OFFENSE_EXPLORATORY_V3_INGEST_V1.json")
+V3_FIXED = {
+    "contract_id": "S1.42AK-OFFENSE-EXPLORATORY-V3",
+    "build_id": "S1.42AK",
+    "inbox_filename": "S1.42AK_OFFENSE_EXPLORATORY_V3_LogOutput.log",
+    "raw_filename": "LogOutput.log",
+    "accepted_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
+    "accepted_profile_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
+    "runtime_active_build": "S1.42AK-BMDSFIX1",
+    "moon": "Offense"
+}
+V3_EXPECTED = dict(V3_FIXED, size=None, sha256=None)
+V3_PROVENANCE = "USER_ATTESTED_S1_42AK_PROFILE_CONTINUITY_NOT_INDEPENDENT_BYTES"
+V3_RETENTION = {
+    "raw_original": "PRESERVE_UNTIL_SEPARATE_P0_P6_AND_RETENTION_DECISION",
+    "no_automatic_deletion": True
+}
+V3_MODE = "COMPLETED_S1_42AK_OFFENSE_EXPLORATORY_V3_NOT_RUNTIME_ACTIVATION"
+
+def v3_expected_from_contract(contract: dict) -> dict:
+    expected = contract.get("expected")
+    if not isinstance(expected, dict) or set(expected) != set(V3_EXPECTED):
+        raise RuntimeError("V3_REFUSED: missing or unexpected expected fields")
+    if any(expected.get(k) != v for k, v in V3_FIXED.items()):
+        raise RuntimeError("V3_REFUSED: pinned attribution drift")
+    if (contract.get("schema_version") != 1 or
+            set(contract) != {"schema_version", "status", "expected", "receipt", "provenance", "retention", "upload_authorized"} or
+            contract.get("provenance") != V3_PROVENANCE or contract.get("retention") != V3_RETENTION):
+        raise RuntimeError("V3_REFUSED: contract schema/provenance/retention drift")
+    if contract.get("status") == "PREPARED_UNARMED":
+        if expected != V3_EXPECTED or contract.get("upload_authorized") is not False or contract.get("receipt") is not None:
+            raise RuntimeError("V3_REFUSED: invalid unarmed state")
+        raise RuntimeError("V3_REFUSED: PREPARED_UNARMED; no upload or original SHA is authorized")
+    if (contract.get("status") != "PENDING" or contract.get("upload_authorized") is not True
+            or contract.get("receipt") is not None):
+        raise RuntimeError("V3_REFUSED: not authorized PENDING or already consumed")
+    if (type(expected["size"]) is not int or expected["size"] < 1
+            or not isinstance(expected["sha256"], str)
+            or len(expected["sha256"]) != 64
+            or any(c not in "0123456789abcdef" for c in expected["sha256"])
+            or expected["sha256"] in {ONESHOT_EXPECTED["sha256"], V2_EXPECTED["sha256"]}):
+        raise RuntimeError("V3_REFUSED: original byte identity is missing, malformed or reused")
+    return expected
+
 def sha256(path: Path) -> str:
     h = hashlib.sha256()
     with path.open("rb") as f:
@@ -273,6 +318,107 @@ def consume_v2(contract: dict, run_dir: Path, stamp: str, active: str) -> None:
     V2_CONTRACT.write_text(json.dumps(contract, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
+
+def refuse_misattributed_v3_original(files: list[Path]) -> None:
+    """Reject exact V3 bytes in the ordinary/large namespaces, including ZIP members."""
+    if any(source.name == V3_FIXED["inbox_filename"] for source in files):
+        raise RuntimeError("V3_REFUSED: reserved V3 original cannot use ordinary/large route")
+    try:
+        contract = json.loads(V3_CONTRACT.read_text(encoding="utf-8"))
+        expected = contract.get("expected", {})
+    except (OSError, ValueError, TypeError):
+        raise RuntimeError("V3_REFUSED: V3 contract unreadable")
+    if not isinstance(expected, dict):
+        raise RuntimeError("V3_REFUSED: V3 expected invalid")
+    if (type(expected.get("size")) is not int or expected["size"] < 1 or
+            not isinstance(expected.get("sha256"), str) or len(expected["sha256"]) != 64):
+        return
+    for source in files:
+        if source.stat().st_size == expected["size"] and sha256(source) == expected["sha256"]:
+            raise RuntimeError("V3_REFUSED: exact exploratory original requires reserved V3 inbox route")
+        # ZIP and R2Z packages must not hide the exact log under BMDSFIX1 attribution.
+        if zipfile.is_zipfile(source):
+            try:
+                with zipfile.ZipFile(source, "r") as archive:
+                    for info in archive.infolist():
+                        if info.is_dir() or info.file_size != expected["size"]:
+                            continue
+                        digest = hashlib.sha256()
+                        with archive.open(info, "r") as member:
+                            for chunk in iter(lambda: member.read(1024 * 1024), b""):
+                                digest.update(chunk)
+                        if digest.hexdigest() == expected["sha256"]:
+                            raise RuntimeError("V3_REFUSED: exact exploratory original inside archive")
+            except (OSError, zipfile.BadZipFile, EOFError) as exc:
+                raise RuntimeError("V3_REFUSED: unsafe or unreadable archive") from exc
+
+
+def require_v3(source: Path, active: str, files: list[Path]) -> dict:
+    """Pin one separate S1.42AK batch without changing the active runtime controller."""
+    if not V3_CONTRACT.is_file():
+        raise RuntimeError("V3_REFUSED: contract missing")
+    contract = json.loads(V3_CONTRACT.read_text(encoding="utf-8"))
+    expected = v3_expected_from_contract(contract)
+    if len(files) != 1 or files[0] != source or source.name != expected["inbox_filename"]:
+        raise RuntimeError("V3_REFUSED: reserved V3 upload must be the sole inbox source")
+    if source.is_symlink() or not source.is_file():
+        raise RuntimeError("V3_REFUSED: non-regular original source")
+    if source.stat().st_size != expected["size"] or sha256(source) != expected["sha256"]:
+        raise RuntimeError("V3_REFUSED: original source size/SHA-256 mismatch")
+    if active != expected["runtime_active_build"]:
+        raise RuntimeError("V3_REFUSED: runtime controller changed")
+    state = json.loads(ONESHOT_STATE.read_text(encoding="utf-8"))
+    accepted, candidate, latest = (state.get(k, {}) for k in
+                                    ("accepted_baseline", "active_candidate", "latest_built_artifact"))
+    controllers = state.get("controllers", {})
+    buildspec = json.loads(ONESHOT_BUILDSPEC.read_text(encoding="utf-8"))
+    if not (
+            accepted.get("build_id") == expected["build_id"]
+            and accepted.get("status") == "ACCEPTED_FULL_NORMAL_STACK"
+            and accepted.get("profile") == expected["accepted_profile"]
+            and accepted.get("sha256") == expected["accepted_profile_sha256"]
+            and candidate.get("build_id") == active
+            and candidate.get("status") == "ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED"
+            and latest.get("build_id") == active
+            and controllers.get("runtime_active_build") == active
+            and controllers.get("build_enabled") is False
+            and buildspec.get("enabled") is False
+            and buildspec.get("build_id") == controllers.get("build_id")
+            and buildspec.get("base_profile") == candidate.get("profile")
+            and buildspec.get("base_sha256") == candidate.get("sha256")
+            and buildspec.get("output_profile") == "Profiles/DO_NOT_BUILD.r2z"):
+        raise RuntimeError("V3_REFUSED: accepted-profile/build/runtime state drift")
+    # Replay checking spans ALL build namespaces, not just S1.42AK.
+    for index_path in sorted(EVIDENCE.glob("*/*/INDEX.json")):
+        index = json.loads(index_path.read_text(encoding="utf-8"))
+        records = list(index.get("files", [])) + list(index.get("logical_sources", []))
+        if (index.get("attribution", {}).get("contract_id") == expected["contract_id"]
+                or any(r.get("sha256") == expected["sha256"] for r in records)
+                or any(a.get("stats", {}).get("source_sha256") == expected["sha256"]
+                       for a in index.get("analysis", []))):
+            raise RuntimeError("V3_REFUSED: exact original/contract already indexed; replay")
+    return contract
+
+
+def consume_v3(contract: dict, run_dir: Path, stamp: str, active: str) -> None:
+    expected = contract["expected"]
+    contract["status"] = "CONSUMED"
+    contract["receipt"] = {
+        "contract_id": expected["contract_id"],
+        "ingested_utc": stamp,
+        "evidence_index": (run_dir / "INDEX.json").as_posix(),
+        "raw_path": (run_dir / "raw" / expected["raw_filename"]).as_posix(),
+        "sha256": expected["sha256"],
+        "size": expected["size"],
+        "build_id": expected["build_id"],
+        "source_inbox_name": expected["inbox_filename"],
+        "runtime_active_build_at_ingest": active,
+        "original_profile_bytes_independently_verified": False,
+    }
+    # The workflow commits receipt, raw, INDEX, analysis and inbox deletion together.
+    V3_CONTRACT.write_text(json.dumps(contract, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
 def main() -> int:
     if not ACTIVE.exists():
         raise RuntimeError("RuntimeInbox/ACTIVE_BUILD.txt is missing")
@@ -288,17 +434,22 @@ def main() -> int:
         raise RuntimeError("Runtime inbox contains unsupported file type")
     one_shot = any(p.name == ONESHOT_EXPECTED["inbox_filename"] for p in files)
     v2 = any(p.name == V2_EXPECTED["inbox_filename"] for p in files)
-    if one_shot and v2:
+    v3 = any(p.name == V3_FIXED["inbox_filename"] for p in files)
+    if sum((one_shot, v2, v3)) > 1:
         raise RuntimeError("V2_REFUSED: reserved routes cannot share an inbox")
     contract = require_one_shot(next(p for p in files if p.name == ONESHOT_EXPECTED["inbox_filename"]), build_id, files) if one_shot else None
     v2_contract = require_v2(next(p for p in files if p.name == V2_EXPECTED["inbox_filename"]), build_id, files) if v2 else None
+    v3_contract = require_v3(next(p for p in files if p.name == V3_FIXED["inbox_filename"]), build_id, files) if v3 else None
     if one_shot:
         build_id = ONESHOT_EXPECTED["build_id"]
     elif v2:
         build_id = V2_EXPECTED["build_id"]
+    elif v3:
+        build_id = V3_FIXED["build_id"]
     else:
         refuse_misattributed_original(files)
         refuse_misattributed_v2_original(files)
+        refuse_misattributed_v3_original(files)
 
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     run_dir = EVIDENCE / build_id / stamp
@@ -350,8 +501,23 @@ def main() -> int:
             "no_automatic_deletion": True,
             "keep_before_deletion": index["retention"]["keep_before_deletion"],
         }
+    if v3:
+        index["attribution"] = {
+            "mode": V3_MODE,
+            "contract_id": V3_FIXED["contract_id"],
+            "source_inbox_name": V3_FIXED["inbox_filename"],
+            "runtime_active_build_at_ingest": V3_FIXED["runtime_active_build"],
+            "original_profile_bytes_independently_verified": False,
+        }
+        index["retention"] = {
+            "raw_and_extracted_are_disposable_after_acceptance": False,
+            "raw_original": V3_RETENTION["raw_original"],
+            "no_automatic_deletion": True,
+            "keep_before_deletion": index["retention"]["keep_before_deletion"],
+        }
     for source in files:
-        dest = raw_dir / (V2_EXPECTED["raw_filename"] if v2 else
+        dest = raw_dir / (V3_FIXED["raw_filename"] if v3 else
+                          V2_EXPECTED["raw_filename"] if v2 else
                           ONESHOT_EXPECTED["raw_filename"] if one_shot else source.name)
         shutil.copy2(source, dest)
         record = {
@@ -394,6 +560,8 @@ def main() -> int:
         consume_one_shot(contract, run_dir, stamp, ONESHOT_EXPECTED["runtime_active_build"])
     if v2:
         consume_v2(v2_contract, run_dir, stamp, V2_EXPECTED["runtime_active_build"])
+    if v3:
+        consume_v3(v3_contract, run_dir, stamp, V3_FIXED["runtime_active_build"])
     for source in files:
         source.unlink()
 

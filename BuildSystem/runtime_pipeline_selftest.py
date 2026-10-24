@@ -526,6 +526,220 @@ def assert_random_batch_v2(tmp: Path) -> None:
         os.chdir(original_cwd)
 
 
+
+def assert_random_batch_v3(tmp: Path) -> None:
+    """Entirely synthetic V3 evidence: success, receipt, replay and negative guards."""
+    original_expected = one_shot_ingest.V3_EXPECTED
+    original_cwd = Path.cwd()
+    original_argv = sys.argv
+    spec = importlib.util.spec_from_file_location(
+        "v3_independent_byte_validator", ROOT / "RepositoryTools/artifact_byte_integrity_validator.py"
+    )
+    validator = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    spec.loader.exec_module(validator)
+
+    def fixture(name: str):
+        root = tmp / ("v3-" + name)
+        (root / "RuntimeInbox/Current").mkdir(parents=True)
+        (root / "RuntimeEvidence").mkdir()
+        (root / "Current").mkdir()
+        (root / "BuildSpecs").mkdir()
+        data = (b"[12:00:01.000] [Info   :SelfTest] V3 ordinary Offense A\n"
+                b"[12:00:02.000] [Info   :SelfTest] V3 ordinary Offense B\n")
+        expected = dict(original_expected, size=len(data), sha256=hashlib.sha256(data).hexdigest())
+        candidate = {"build_id": expected["runtime_active_build"],
+                     "status": "ACTIVE_RUNTIME_CANDIDATE_NOT_ACCEPTED",
+                     "profile": "Profiles/SyntheticBMDS.r2z", "sha256": "a" * 64}
+        state = {
+            "accepted_baseline": {
+                "build_id": expected["build_id"],
+                "profile": expected["accepted_profile"],
+                "sha256": expected["accepted_profile_sha256"],
+                "status": "ACCEPTED_FULL_NORMAL_STACK",
+            },
+            "active_candidate": candidate,
+            "latest_built_artifact": {"build_id": expected["runtime_active_build"]},
+            "controllers": {
+                "runtime_active_build": expected["runtime_active_build"],
+                "build_enabled": False,
+                "build_id": "IDLE_UNIVERSAL_INTERIOR_VIABILITY_ANALYSIS",
+            },
+        }
+        buildspec = {
+            "enabled": False, "build_id": state["controllers"]["build_id"],
+            "base_profile": candidate["profile"], "base_sha256": candidate["sha256"],
+            "output_profile": "Profiles/DO_NOT_BUILD.r2z",
+        }
+        contract = {
+            "schema_version": 1, "status": "PENDING", "expected": expected,
+            "receipt": None, "provenance": one_shot_ingest.V3_PROVENANCE,
+            "retention": one_shot_ingest.V3_RETENTION, "upload_authorized": True,
+        }
+        (root / "Current/CURRENT_STATE.json").write_text(json.dumps(state), encoding="utf-8")
+        (root / "BuildSpecs/current.json").write_text(json.dumps(buildspec), encoding="utf-8")
+        (root / "Current/S1.42AK_OFFENSE_RANDOM_BATCH_V3_INGEST_V1.json").write_text(
+            json.dumps(contract), encoding="utf-8"
+        )
+        (root / "RuntimeInbox/ACTIVE_BUILD.txt").write_text(
+            expected["runtime_active_build"] + "\n", encoding="utf-8"
+        )
+        (root / "RuntimeInbox/Current" / expected["inbox_filename"]).write_bytes(data)
+        return root, expected, data
+
+    def call(root: Path, expected: dict):
+        os.chdir(root)
+        return one_shot_ingest.main()
+
+    def refuse(root: Path, expected: dict):
+        source = root / "RuntimeInbox/Current" / expected["inbox_filename"]
+        before = source.read_bytes() if source.exists() else None
+        manifest_path = root / "Current/S1.42AK_OFFENSE_RANDOM_BATCH_V3_INGEST_V1.json"
+        manifest_before = manifest_path.read_bytes()
+        try:
+            call(root, expected)
+        except RuntimeError as exc:
+            assert "V3_REFUSED" in str(exc), str(exc)
+        else:
+            raise AssertionError("V3 negative test unexpectedly accepted input")
+        assert not list((root / "RuntimeEvidence").rglob("INDEX.json"))
+        assert manifest_path.read_bytes() == manifest_before, "failed V3 preflight changed contract"
+        if before is not None:
+            assert source.read_bytes() == before, "failed V3 preflight changed source"
+
+    try:
+        root, expected, data = fixture("unarmed")
+        path = root / "Current/S1.42AK_OFFENSE_EXPLORATORY_V3_INGEST_V1.json"
+        initial = json.loads(path.read_text())
+        initial["status"] = "PREPARED_UNARMED"
+        initial["expected"]["size"] = None
+        initial["expected"]["sha256"] = None
+        initial["upload_authorized"] = False
+        path.write_text(json.dumps(initial))
+        errors = []
+        validator.verify_v3_contract(root, errors)
+        assert not errors, errors
+        refuse(root, expected)
+
+        root, expected, data = fixture("valid")
+        assert not (root / "RuntimeEvidence/S1.42AK").exists()
+        errors = []
+        validator.verify_v3_contract(root, errors)
+        assert not errors, errors
+        assert call(root, expected) == 0
+        consumed = json.loads((root / "Current/S1.42AK_OFFENSE_RANDOM_BATCH_V3_INGEST_V1.json").read_text())
+        assert consumed["status"] == "CONSUMED"
+        receipt = consumed["receipt"]
+        assert receipt["build_id"] == "S1.42AK"
+        assert receipt["runtime_active_build_at_ingest"] == "S1.42AK-BMDSFIX1"
+        assert receipt["original_profile_bytes_independently_verified"] is False
+        assert (root / receipt["raw_path"]).read_bytes() == data
+        index = json.loads((root / receipt["evidence_index"]).read_text())
+        assert index["attribution"]["mode"] == one_shot_ingest.V3_MODE
+        assert index["retention"]["no_automatic_deletion"] is True
+        assert index["retention"]["raw_and_extracted_are_disposable_after_acceptance"] is False
+        errors = []
+        validator.verify_v3_contract(root, errors)
+        assert not errors, errors
+        source = root / "RuntimeInbox/Current" / expected["inbox_filename"]
+        source.write_bytes(data)
+        try:
+            call(root, expected)
+        except RuntimeError as exc:
+            assert "V3_REFUSED" in str(exc)
+        else:
+            raise AssertionError("V3 CONSUMED replay accepted")
+        # Resetting PENDING alone cannot bypass the globally indexed original SHA.
+        manifest_path = root / "Current/S1.42AK_OFFENSE_RANDOM_BATCH_V3_INGEST_V1.json"
+        manifest_path.write_text(json.dumps(dict(consumed, status="PENDING", receipt=None)))
+        try:
+            call(root, expected)
+        except RuntimeError as exc:
+            assert "replay" in str(exc)
+        else:
+            raise AssertionError("V3 indexed-SHA replay accepted")
+        manifest_path.write_text(json.dumps(consumed))
+        (root / receipt["raw_path"]).write_bytes(data + b"tamper")
+        errors = []
+        validator.verify_v3_contract(root, errors)
+        assert any("raw original byte mismatch" in err for err in errors), errors
+
+        root, expected, data = fixture("bad-sha")
+        source = root / "RuntimeInbox/Current" / expected["inbox_filename"]
+        corrupted = bytearray(data)
+        corrupted[0] ^= 1
+        source.write_bytes(corrupted)
+        refuse(root, expected)
+
+        root, expected, data = fixture("bad-size")
+        refuse(root, dict(expected, size=len(data) + 1))
+        root, expected, data = fixture("wrong-controller")
+        (root / "RuntimeInbox/ACTIVE_BUILD.txt").write_text("S1.42AK\n")
+        refuse(root, expected)
+        root, expected, data = fixture("wrong-profile")
+        state_path = root / "Current/CURRENT_STATE.json"
+        state = json.loads(state_path.read_text())
+        state["accepted_baseline"]["sha256"] = "b" * 64
+        state_path.write_text(json.dumps(state))
+        refuse(root, expected)
+        root, expected, data = fixture("extra-source")
+        (root / "RuntimeInbox/Current/other.cfg").write_text("bad\n")
+        refuse(root, expected)
+        root, expected, data = fixture("tampered-contract")
+        manifest = root / "Current/S1.42AK_OFFENSE_RANDOM_BATCH_V3_INGEST_V1.json"
+        invalid = json.loads(manifest.read_text())
+        invalid["retention"]["no_automatic_deletion"] = False
+        manifest.write_text(json.dumps(invalid))
+        refuse(root, expected)
+        root, expected, data = fixture("consumed-without-receipt")
+        manifest = root / "Current/S1.42AK_OFFENSE_RANDOM_BATCH_V3_INGEST_V1.json"
+        invalid = json.loads(manifest.read_text())
+        invalid["status"] = "CONSUMED"
+        manifest.write_text(json.dumps(invalid))
+        refuse(root, expected)
+
+        root, expected, data = fixture("generic-misattribution")
+        (root / "RuntimeInbox/Current" / expected["inbox_filename"]).rename(
+            root / "RuntimeInbox/Current/LogOutput.log"
+        )
+        refuse(root, expected)
+        root, expected, data = fixture("zip-misattribution")
+        source = root / "RuntimeInbox/Current" / expected["inbox_filename"]
+        source.unlink()
+        with zipfile.ZipFile(root / "RuntimeInbox/Current/ordinary.zip", "w") as z:
+            z.writestr("LogOutput.log", data)
+        refuse(root, expected)
+        root, expected, data = fixture("unrelated-generic")
+        (root / "RuntimeInbox/Current" / expected["inbox_filename"]).unlink()
+        (root / "RuntimeInbox/Current/LogOutput.log").write_bytes(b"different ordinary bytes\n")
+        assert call(root, expected) == 0
+        index_paths = list((root / "RuntimeEvidence/S1.42AK-BMDSFIX1").glob("*/INDEX.json"))
+        assert len(index_paths) == 1
+
+        # Imported large-ingest function shares the exact V3 guard; output must stay empty.
+        root, expected, data = fixture("large-zip")
+                source = root / "RuntimeInbox/Current" / expected["inbox_filename"]
+        source.unlink()
+        large_inbox = root / "RuntimeInbox/Large"
+        large_inbox.mkdir()
+        with zipfile.ZipFile(large_inbox / "batch.zip", "w") as z:
+            z.writestr("LogOutput.log", data)
+        out, scratch = root / "large-out", root / "large-scratch"
+        sys.argv = ["runtime_large_ingest.py", "--inbox", str(large_inbox),
+                    "--active", str(root / "RuntimeInbox/ACTIVE_BUILD.txt"),
+                    "--output", str(out), "--scratch", str(scratch)]
+        try:
+            large_ingest.main()
+        except RuntimeError as exc:
+            assert "V3_REFUSED" in str(exc), str(exc)
+        else:
+            raise AssertionError("V3 large-log ZIP misattribution accepted")
+        assert not out.exists() and not scratch.exists()
+    finally:
+                sys.argv = original_argv
+        os.chdir(original_cwd)
+
+
 def main() -> int:
     with tempfile.TemporaryDirectory(prefix="runtime-pipeline-selftest-") as td:
         tmp = Path(td)
@@ -536,6 +750,7 @@ def main() -> int:
         assert_prepare_helper(tmp, sample)
         assert_historical_one_shot(tmp)
         assert_random_batch_v2(tmp)
+        assert_random_batch_v3(tmp)
     print("runtime pipeline self-test: PASS")
     return 0
 

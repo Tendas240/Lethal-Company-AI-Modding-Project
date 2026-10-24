@@ -10,6 +10,7 @@ on:
       - "RepositoryTools/artifact_byte_integrity_validator.py"
       - "Current/S1.42AK_OFFENSE_MINESHAFT_ONE_SHOT_INGEST_V1.json"
       - "Current/S1.42AK_OFFENSE_RANDOM_BATCH_V2_INGEST_V1.json"
+      - "Current/S1.42AK_OFFENSE_EXPLORATORY_V3_INGEST_V1.json"
       - "Knowledge/BUILD_AND_RUNTIME_PIPELINE.md"
       - "RuntimeInbox/README.md"
   push:
