@@ -456,11 +456,7 @@ def assert_random_batch_v2(tmp: Path) -> None:
         refuse(root, expected)
 
         root, expected, data = fixture("bad-size")
-        manifest = root / "Current/S1.42AK_OFFENSE_EXPLORATORY_V3_INGEST_V1.json"
-        invalid = json.loads(manifest.read_text())
-        invalid["expected"]["size"] += 1
-        manifest.write_text(json.dumps(invalid))
-        refuse(root, expected)
+        refuse(root, dict(expected, size=len(data) + 1))
         root, expected, data = fixture("wrong-controller")
         (root / "RuntimeInbox/ACTIVE_BUILD.txt").write_text("S1.42AK\n")
         refuse(root, expected)
