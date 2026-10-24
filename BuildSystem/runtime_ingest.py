@@ -323,6 +323,10 @@ def refuse_misattributed_v3_original(files: list[Path]) -> None:
     """Reject exact V3 bytes in the ordinary/large namespaces, including ZIP members."""
     if any(source.name == V3_FIXED["inbox_filename"] for source in files):
         raise RuntimeError("V3_REFUSED: reserved V3 original cannot use ordinary/large route")
+    # Ordinary V1/V2/large synthetic fixtures can run without the V3 contract;
+    # the dedicated V3 entry point itself always requires it.
+    if not V3_CONTRACT.is_file():
+        return
     try:
         contract = json.loads(V3_CONTRACT.read_text(encoding="utf-8"))
         expected = contract.get("expected", {})
