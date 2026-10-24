@@ -1,0 +1,48 @@
+{
+  "scope": "ORIGINAL_BYTE_ARCHIVE_ONLY_NOT_INSTALLED_OR_LOADED_RUNTIME_PROVENANCE",
+  "main_input_commit": "c44789803a677e010f9683d861cbf0eef9b143cc",
+  "sources": [
+    {
+      "file": "LethalLevelLoader.dll",
+      "member": "LethalLevelLoader.dll",
+      "package_version": "1.7.12",
+      "archive_url": "https://thunderstore.io/package/download/IAmBatby/LethalLevelLoader/1.7.12/",
+      "archive_sha256": "e01eadec8b1df3a1bc331e98b29d94baffa572cb7379953f1fa4e46df0aa6451"
+    },
+    {
+      "file": "0Harmony.dll",
+      "member": "BepInEx/core/0Harmony.dll",
+      "distribution_version": "v5.4.23.5",
+      "archive_url": "https://github.com/BepInEx/BepInEx/releases/download/v5.4.23.5/BepInEx_win_x64_5.4.23.5.zip",
+      "archive_sha256": "82f9878551030f54657792c0740d9d51a09500eeae1fba21106b0c441e6732c4"
+    },
+    {
+      "file": "S142ABInteriorWeightNormalization.dll",
+      "member": "BepInEx/plugins/S142ABInteriorWeightNormalization/S142ABInteriorWeightNormalization.dll",
+      "archive_path": "Profiles/LC V1 S1.42AK-BMDSFIX1 Black Mesa Deep Sewers Size Fix.r2z",
+      "archive_sha256": "3f9c7fd5c21c532528db1ddae36764ada73236b7527c6ab2ae1b982c3976b7b0"
+    }
+  ],
+  "files": [
+    {
+      "filename": "LethalLevelLoader.dll",
+      "bytes": 434688,
+      "sha256": "b95aad3813dd7dc1d50aa29c9606660022b149790905a1589180e19d7c157c8c"
+    },
+    {
+      "filename": "0Harmony.dll",
+      "bytes": 204800,
+      "sha256": "1a21cc03424fc82c3dd1346905d16494536b9595ae4162228d99fb7c285c1031"
+    },
+    {
+      "filename": "S142ABInteriorWeightNormalization.dll",
+      "bytes": 15872,
+      "sha256": "901c02a8e85d33af24d0aa906faa6052a7de33faa7dfbeeca590bbd8a8f59a06"
+    }
+  ],
+  "limits": [
+    "Not evidence of actually installed local file path",
+    "Not evidence of actually loaded CLR module",
+    "No Harmony runtime patch order or wrapper identity proof"
+  ]
+}
