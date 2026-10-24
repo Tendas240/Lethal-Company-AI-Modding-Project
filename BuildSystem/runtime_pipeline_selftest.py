@@ -456,7 +456,11 @@ def assert_random_batch_v2(tmp: Path) -> None:
         refuse(root, expected)
 
         root, expected, data = fixture("bad-size")
-        refuse(root, dict(expected, size=len(data) + 1))
+        manifest = root / "Current/S1.42AK_OFFENSE_EXPLORATORY_V3_INGEST_V1.json"
+        invalid = json.loads(manifest.read_text())
+        invalid["expected"]["size"] += 1
+        manifest.write_text(json.dumps(invalid))
+        refuse(root, expected)
         root, expected, data = fixture("wrong-controller")
         (root / "RuntimeInbox/ACTIVE_BUILD.txt").write_text("S1.42AK\n")
         refuse(root, expected)
@@ -578,7 +582,7 @@ def assert_random_batch_v3(tmp: Path) -> None:
         }
         (root / "Current/CURRENT_STATE.json").write_text(json.dumps(state), encoding="utf-8")
         (root / "BuildSpecs/current.json").write_text(json.dumps(buildspec), encoding="utf-8")
-        (root / "Current/S1.42AK_OFFENSE_RANDOM_BATCH_V3_INGEST_V1.json").write_text(
+        (root / "Current/S1.42AK_OFFENSE_EXPLORATORY_V3_INGEST_V1.json").write_text(
             json.dumps(contract), encoding="utf-8"
         )
         (root / "RuntimeInbox/ACTIVE_BUILD.txt").write_text(
@@ -594,7 +598,7 @@ def assert_random_batch_v3(tmp: Path) -> None:
     def refuse(root: Path, expected: dict):
         source = root / "RuntimeInbox/Current" / expected["inbox_filename"]
         before = source.read_bytes() if source.exists() else None
-        manifest_path = root / "Current/S1.42AK_OFFENSE_RANDOM_BATCH_V3_INGEST_V1.json"
+        manifest_path = root / "Current/S1.42AK_OFFENSE_EXPLORATORY_V3_INGEST_V1.json"
         manifest_before = manifest_path.read_bytes()
         try:
             call(root, expected)
@@ -627,7 +631,7 @@ def assert_random_batch_v3(tmp: Path) -> None:
         validator.verify_v3_contract(root, errors)
         assert not errors, errors
         assert call(root, expected) == 0
-        consumed = json.loads((root / "Current/S1.42AK_OFFENSE_RANDOM_BATCH_V3_INGEST_V1.json").read_text())
+        consumed = json.loads((root / "Current/S1.42AK_OFFENSE_EXPLORATORY_V3_INGEST_V1.json").read_text())
         assert consumed["status"] == "CONSUMED"
         receipt = consumed["receipt"]
         assert receipt["build_id"] == "S1.42AK"
@@ -650,7 +654,7 @@ def assert_random_batch_v3(tmp: Path) -> None:
         else:
             raise AssertionError("V3 CONSUMED replay accepted")
         # Resetting PENDING alone cannot bypass the globally indexed original SHA.
-        manifest_path = root / "Current/S1.42AK_OFFENSE_RANDOM_BATCH_V3_INGEST_V1.json"
+        manifest_path = root / "Current/S1.42AK_OFFENSE_EXPLORATORY_V3_INGEST_V1.json"
         manifest_path.write_text(json.dumps(dict(consumed, status="PENDING", receipt=None)))
         try:
             call(root, expected)
@@ -686,13 +690,13 @@ def assert_random_batch_v3(tmp: Path) -> None:
         (root / "RuntimeInbox/Current/other.cfg").write_text("bad\n")
         refuse(root, expected)
         root, expected, data = fixture("tampered-contract")
-        manifest = root / "Current/S1.42AK_OFFENSE_RANDOM_BATCH_V3_INGEST_V1.json"
+        manifest = root / "Current/S1.42AK_OFFENSE_EXPLORATORY_V3_INGEST_V1.json"
         invalid = json.loads(manifest.read_text())
         invalid["retention"]["no_automatic_deletion"] = False
         manifest.write_text(json.dumps(invalid))
         refuse(root, expected)
         root, expected, data = fixture("consumed-without-receipt")
-        manifest = root / "Current/S1.42AK_OFFENSE_RANDOM_BATCH_V3_INGEST_V1.json"
+        manifest = root / "Current/S1.42AK_OFFENSE_EXPLORATORY_V3_INGEST_V1.json"
         invalid = json.loads(manifest.read_text())
         invalid["status"] = "CONSUMED"
         manifest.write_text(json.dumps(invalid))
@@ -718,7 +722,7 @@ def assert_random_batch_v3(tmp: Path) -> None:
 
         # Imported large-ingest function shares the exact V3 guard; output must stay empty.
         root, expected, data = fixture("large-zip")
-                source = root / "RuntimeInbox/Current" / expected["inbox_filename"]
+        source = root / "RuntimeInbox/Current" / expected["inbox_filename"]
         source.unlink()
         large_inbox = root / "RuntimeInbox/Large"
         large_inbox.mkdir()
