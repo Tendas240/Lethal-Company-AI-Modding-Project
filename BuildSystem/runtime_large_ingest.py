@@ -13,7 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path, PurePosixPath
 
 from runtime_log_analyzer import analyze_log, is_text_candidate
-from runtime_ingest import refuse_misattributed_v2_original
+from runtime_ingest import refuse_misattributed_v2_original, refuse_misattributed_v3_original
 
 PART_RE = re.compile(r"^(?P<base>.+\.zip)\.part(?P<num>\d{3})$")
 
@@ -103,6 +103,7 @@ def main() -> int:
             return 0
         # Check reconstructed ZIPs and original members BEFORE creating evidence output.
         refuse_misattributed_v2_original(logical)
+        refuse_misattributed_v3_original(logical)
         args.output.mkdir(parents=True, exist_ok=True)
         args.scratch.mkdir(parents=True, exist_ok=True)
 

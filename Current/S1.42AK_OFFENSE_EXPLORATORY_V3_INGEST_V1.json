@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "status": "PREPARED_UNARMED",
+  "expected": {
+    "contract_id": "S1.42AK-OFFENSE-EXPLORATORY-V3",
+    "build_id": "S1.42AK",
+    "inbox_filename": "S1.42AK_OFFENSE_EXPLORATORY_V3_LogOutput.log",
+    "raw_filename": "LogOutput.log",
+    "accepted_profile": "Profiles/LC V1 S1.42AK LC Office Camera Enemy Balance.r2z",
+    "accepted_profile_sha256": "b39aa550a517ec727de6eb1ae825383933047d3c556cb6e8d4aa7611c9f89dee",
+    "runtime_active_build": "S1.42AK-BMDSFIX1",
+    "moon": "Offense",
+    "size": null,
+    "sha256": null
+  },
+  "receipt": null,
+  "provenance": "USER_ATTESTED_S1_42AK_PROFILE_CONTINUITY_NOT_INDEPENDENT_BYTES",
+  "retention": {
+    "raw_original": "PRESERVE_UNTIL_SEPARATE_P0_P6_AND_RETENTION_DECISION",
+    "no_automatic_deletion": true
+  },
+  "upload_authorized": false
+}
